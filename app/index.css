@@ -1,0 +1,43 @@
+.center {
+  text-align: center;
+}
+
+.nav-tabs{
+  padding-bottom: 50px;
+}
+
+.btn-circle {
+  margin-top: 7px;
+  width: 70px;
+  height: 70px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.42;
+  border-radius: 34px;
+  margin:15px;
+}
+.img-view {
+    height: 540px;
+    /*width: 400px;*/
+    overflow: hidden;
+}
+.img-view img {
+    height: 100%;
+    width: auto;
+}
+/*.tabs{*/
+  /*margin-bottom: 15px;*/
+/*}*/
+label{
+  margin-top: 15px;
+}
+.checkbox-list{
+  margin-right: 6px!important ;
+}
+form{
+  margin-bottom: 20px;
+}
+.dropdown{
+  margin-right: 15px;
+}
