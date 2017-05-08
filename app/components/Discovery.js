@@ -12,6 +12,8 @@ export default class Discovery extends Component {
     super(props);
     this.state = {
       currentUser: {},
+      loads:0,
+      clicks:0
     };
     this.clickSuccess = this.clickSuccess.bind(this);
     this.clickDeny = this.clickDeny.bind(this);
@@ -22,9 +24,25 @@ export default class Discovery extends Component {
       .then(res => {
         profiles = res.data;
         this.setState({
-          currentUser: this.getRandomUser(),
+          currentUser: this.getUserFromArray(),
         });
       });
+  }
+
+  getNewUsers(){
+    axios.get('http://localhost:8080/api/profiles')
+      .then(res => {
+        profiles = profiles.concat(res.data);
+      });
+  }
+
+  getUserFromArray(){
+    let user = profiles[0]
+    profiles.splice(0,1)
+    if(profiles.length==2){
+      this.getNewUsers();
+    }
+    return user;
   }
 
   getRandomUser() {
@@ -47,7 +65,7 @@ export default class Discovery extends Component {
 
   newUser(){
     this.setState({
-      currentUser: this.getRandomUser(),
+      currentUser: this.getUserFromArray(),
     });
   }
 
