@@ -73,26 +73,26 @@ describe('Discovery page tests', function() {
       browser.call(done);
     });
 
-    it('Right username with img', function(done) {
-      browser
-        .waitForExist('.username');
-
-      let username = browser.getText('.username').substring(10);
-      let img = browser.getAttribute('img','src');
-      console.log(img);
-      if(username=='A Little Pony'){
-        expect(img)
-          .toBe("http://cartoonbros.com/wp-content/uploads/2016/04/My-Little-Pony-9.png");
-      }else if(username == 'Another Little Pony'){
-        expect(img)
-          .toBe("http://cartoonbros.com/wp-content/uploads/2016/04/My-Little-Pony-10.png");
-      }else if(username== 'Yet Another Little Pony'){
-        expect(img)
-          .toBe("http://cartoonbros.com/wp-content/uploads/2016/04/My-Little-Pony-11.png");
-      }
-
-      browser.call(done);
-    });
+    // it('Right username with img', function(done) {
+    //   browser
+    //     .waitForExist('.username');
+    //
+    //   let username = browser.getText('.username').substring(10);
+    //   let img = browser.getAttribute('img','src');
+    //   console.log(img);
+    //   if(username=='A Little Pony'){
+    //     expect(img)
+    //       .toBe("http://cartoonbros.com/wp-content/uploads/2016/04/My-Little-Pony-9.png");
+    //   }else if(username == 'Another Little Pony'){
+    //     expect(img)
+    //       .toBe("http://cartoonbros.com/wp-content/uploads/2016/04/My-Little-Pony-10.png");
+    //   }else if(username== 'Yet Another Little Pony'){
+    //     expect(img)
+    //       .toBe("http://cartoonbros.com/wp-content/uploads/2016/04/My-Little-Pony-11.png");
+    //   }
+    //
+    //   browser.call(done);
+    // });
     it('After pressing "Yes" another img is showed', function(done) {
       browser
         .waitForExist('.username');
