@@ -27,6 +27,8 @@
 .img-view img {
     height: 100%;
     width: auto;
+    border-radius: 25px;
+    
 }
 /*.tabs{*/
   /*margin-bottom: 15px;*/
