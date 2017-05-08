@@ -20,7 +20,7 @@ export default class Discovery extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:8080/api/profiles')
+    axios.get('/api/profiles')
       .then(res => {
         profiles = res.data;
         this.setState({
