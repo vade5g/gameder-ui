@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 import UserView from './UserView';
 import Button from './Button';
 
-// does not look good though
+// a proxy endpoint
+const endpoint = '/api/profiles';
 let profiles = {};
 
 export default class Discovery extends Component {
@@ -20,7 +21,7 @@ export default class Discovery extends Component {
   }
 
   componentDidMount() {
-    axios.get('/api/profiles')
+    axios.get(endpoint)
       .then(res => {
         profiles = res.data;
         this.setState({
@@ -30,7 +31,7 @@ export default class Discovery extends Component {
   }
 
   getNewUsers(){
-    axios.get('http://localhost:8080/api/profiles')
+    axios.get(endpoint)
       .then(res => {
         profiles = profiles.concat(res.data);
       });
