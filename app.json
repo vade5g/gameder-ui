@@ -8,17 +8,16 @@
     "test": {
       "scripts": {
         "test": "npm run test"
-      }
-    },
-    "buildpacks": [
-      {
-        "url": "heroku/nodejs"
       },
-      {
-        "url": "https://github.com/heroku/heroku-buildpack-google-chrome"
-      }
-    ]
-
+      "buildpacks": [
+        {
+          "url": "heroku/nodejs"
+        },
+        {
+          "url": "https://github.com/heroku/heroku-buildpack-google-chrome"
+        }
+      ]
+    }
   },
   "env": {
     "NODE_ENV": {
