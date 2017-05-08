@@ -10,11 +10,6 @@
       "plugins": [
         "react-hot-loader/babel"
       ]
-<<<<<<< HEAD
-    }
-  }
-}
-=======
     },
     "testing": {
       "presets": [
@@ -24,4 +19,3 @@
     }
   }
 }
->>>>>>> dbaecd94959edaacbfc122bcd7c8b67a22ac731a
