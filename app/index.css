@@ -5,7 +5,9 @@
 .nav-tabs{
   padding-bottom: 50px;
 }
-
+.jumbotron{
+  margin-bottom: 100px;
+}
 .btn-circle {
   margin-top: 7px;
   width: 70px;

@@ -5,6 +5,21 @@ describe('Discovery page tests', function() {
       .windowHandleSize({ width: 1200, height: 800 })
       .call(done);
   });
+  describe('Browser get information about profile', function() {
+    it('browser get username', function(done) {
+      let username = browser.getText('.username');
+      expect(username=='undefined')
+        .toBe(false);
+      browser.call(done);
+    });
+    it('browser get username', function(done) {
+      let img = browser.getAttribute('img','src');
+      expect(img==='underfined')
+        .toBe(false);
+      browser.call(done);
+    });
+
+  });
   describe('"Gameder"logo appears in the top', function() {
     it('should display an Gameder', function(done) {
       browser
@@ -31,7 +46,7 @@ describe('Discovery page tests', function() {
   });
 
   describe('Actions after click on "Yes" or "No"', function() {
-    it('After pressing "Yes" another profile is showed', function(done) {
+    it('After pressing "Yes" another username is showed', function(done) {
       browser
         .waitForExist('.username');
 
@@ -44,7 +59,7 @@ describe('Discovery page tests', function() {
 
       browser.call(done);
     });
-    it('After pressing "No" another profile is showed', function(done) {
+    it('After pressing "No" another username is showed', function(done) {
       browser
         .waitForExist('.username');
 
@@ -75,6 +90,32 @@ describe('Discovery page tests', function() {
         expect(img)
           .toBe("http://cartoonbros.com/wp-content/uploads/2016/04/My-Little-Pony-11.png");
       }
+
+      browser.call(done);
+    });
+    it('After pressing "Yes" another img is showed', function(done) {
+      browser
+        .waitForExist('.username');
+
+      let imgBefore = browser.getAttribute('img','src');
+      browser.click(".yes");
+      let imgAfter = browser.getAttribute('img','src');
+
+      expect(imgBefore === imgAfter)
+        .toBe(false);
+
+      browser.call(done);
+    });
+    it('After pressing "No" another img is showed', function(done) {
+      browser
+        .waitForExist('.username');
+
+      let imgBefore = browser.getAttribute('img','src');
+      browser.click(".no");
+      let imgAfter = browser.getAttribute('img','src');
+
+      expect(imgBefore === imgAfter)
+        .toBe(false);
 
       browser.call(done);
     });
