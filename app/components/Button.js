@@ -17,6 +17,10 @@ export default class Button extends Component{
 
     this.onClick = this.onClick.bind(this);
   }
+<<<<<<< HEAD
+=======
+  
+>>>>>>> dbaecd94959edaacbfc122bcd7c8b67a22ac731a
   getStyle(){
     const style = this.props.style;
 

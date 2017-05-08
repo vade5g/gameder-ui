@@ -10,6 +10,18 @@
       "plugins": [
         "react-hot-loader/babel"
       ]
+<<<<<<< HEAD
     }
   }
 }
+=======
+    },
+    "testing": {
+      "presets": [
+          "react",
+          "es2015"
+      ]
+    }
+  }
+}
+>>>>>>> dbaecd94959edaacbfc122bcd7c8b67a22ac731a
