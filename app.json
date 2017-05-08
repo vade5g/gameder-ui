@@ -16,5 +16,16 @@
         "test": "npm run test"
       }
     }
+  },
+  "env": {
+    "NODE_ENV": {
+      "required": true
+    },
+    "NPM_CONFIG_PRODUCTION": {
+      "required": true
+    },
+    "API_ENDPOINT": {
+      "required": true
+    }
   }
 }
