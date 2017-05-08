@@ -72,11 +72,8 @@ export default class MainView extends React.Component{
       <div>
         <Header/>
         <div className="container">
-          <ul className="nav nav-tabs nav-justified tabs">
-            {this.renderTabs()}
-          </ul>
           <div className="tab-content">
-            <Page/>
+            <Discovery/>
           </div>
         </div>
       </div>

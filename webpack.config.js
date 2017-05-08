@@ -67,6 +67,7 @@ const commonConfig = (env) => {
           ],
           exclude: [
             PATHS.build,
+
             path.join(ROOT, 'node_modules'),
             // PATHS.tests
           ],
