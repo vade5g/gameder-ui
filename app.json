@@ -1,3 +1,31 @@
 {
-
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    },
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-static"
+    },
+    {
+        "url": "https://github.com/heroku/heroku-buildpack-google-chrome"
+    }
+  ],
+  "environments": {
+    "test": {
+      "scripts": {
+        "test": "npm run test"
+      }
+    }
+  },
+  "env": {
+    "NODE_ENV": {
+      "required": true
+    },
+    "NPM_CONFIG_PRODUCTION": {
+      "required": true
+    },
+    "API_ENDPOINT": {
+      "required": true
+    }
+  }
 }
