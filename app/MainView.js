@@ -26,16 +26,18 @@ export default class MainView extends React.Component{
   constructor(props){
     super(props);
     this.switchTab = this.switchTab.bind(this);
+    this.addProfiles=this.addProfiles.bind(this);
     this.state = {
       activeTab: 0,
-      profiles:[],
+      profiles: [],
     };
   }
 
-  addProfiles(array){
+  addProfiles(user) {
     let pro = this.state.profiles;
+    pro.push(user);
     this.setState({
-      profiles: pro.concat(array),
+      profiles: pro,
     });
   }
 

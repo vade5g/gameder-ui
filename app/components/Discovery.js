@@ -20,33 +20,42 @@ export default class Discovery extends Component {
     this.clickDeny = this.clickDeny.bind(this);
   }
 
-  componentDidMount() {
+  componentWillMount() {
     axios.get(endpoint)
       .then(res => {
         profiles = res.data;
+        console.log(profiles);
         this.setState({
           currentUser: this.getUserFromArray(),
         });
       });
-      console.log(profiles);
-      this.props.addProfiles(profiles);
+
   }
 
   getNewUsers(){
     axios.get(endpoint)
       .then(res => {
         profiles = profiles.concat(res.data);
+        console.log(profiles);
       });
-        this.props.addProfiles(profiles);
+
   }
 
   getUserFromArray(){
     let user = profiles[0]
     profiles.splice(0,1)
-    if(profiles.length==2){
+    if(profiles.length<=2){
       this.getNewUsers();
     }
     return user;
+  }
+
+  likeProfile(){
+    let profile = this.state.currentUser;
+    if(profile.like==true){
+      this.props.addProfiles(profile);
+    }
+    this.newUser();
   }
 
   getRandomUser() {
@@ -60,7 +69,7 @@ export default class Discovery extends Component {
   }
 
   clickSuccess(){
-    this.newUser();
+    this.likeProfile();
   }
 
   clickDeny(){
