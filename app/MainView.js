@@ -8,6 +8,8 @@ import Dropdown from './components/Dropdown';
 import RangeSlider from './components/RangeSlider';
 import ReactBootstrapSlider from 'react-bootstrap-slider';
 import Discovery from './components/Discovery';
+import MatchesListGroup from './components/ListGroup/MatchesListGroup';
+import Matches from './components/Matches';
 
 const pages = [
   {
@@ -16,7 +18,7 @@ const pages = [
   },
   {
     title: 'Matches',
-    component: TextInput,
+    component: Matches,
   },
 ];
 
@@ -26,7 +28,15 @@ export default class MainView extends React.Component{
     this.switchTab = this.switchTab.bind(this);
     this.state = {
       activeTab: 0,
+      profiles:[],
     };
+  }
+
+  addProfiles(array){
+    let pro = this.state.profiles;
+    this.setState({
+      profiles: pro.concat(array),
+    });
   }
 
   switchTab(ev) {
@@ -63,16 +73,16 @@ export default class MainView extends React.Component{
 
   render() {
     const Page = this.renderPage();
-
     return(
       <div>
         <Header/>
         <div className="container">
           <ul className="nav nav-tabs nav-justified tabs">
-            {this.renderTabs()}
-          </ul>
+              {this.renderTabs()}
+           </ul>
           <div className="tab-content">
-            <Page/>
+            <Page addProfiles={this.addProfiles} profiles={this.state.profiles}/>
+
           </div>
         </div>
       </div>

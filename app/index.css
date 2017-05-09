@@ -1,7 +1,9 @@
 .center {
   text-align: center;
 }
-
+.matchImg{
+  width:150px;
+}
 .nav-tabs{
   padding-bottom: 50px;
 }
@@ -28,7 +30,7 @@
     height: 100%;
     width: auto;
     border-radius: 25px;
-    
+
 }
 /*.tabs{*/
   /*margin-bottom: 15px;*/
