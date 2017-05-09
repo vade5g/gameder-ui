@@ -30,6 +30,8 @@ export default class MainView extends React.Component{
       activeTab: 0,
       profiles:[],
     };
+
+    this.addProfiles = this.addProfiles.bind(this, this.state.profiles);
   }
 
   addProfiles(array){
