@@ -28,7 +28,15 @@ export default class MainView extends React.Component{
     this.switchTab = this.switchTab.bind(this);
     this.state = {
       activeTab: 0,
+      profiles:[],
     };
+  }
+
+  addProfiles(array){
+    let pro = this.state.profiles;
+    this.setState({
+      profiles: pro.concat(array),
+    });
   }
 
   switchTab(ev) {
@@ -73,7 +81,7 @@ export default class MainView extends React.Component{
               {this.renderTabs()}
            </ul>
           <div className="tab-content">
-            <Page/>
+            <Page addProfiles={this.addProfiles} profiles={this.state.profiles}/>
           </div>
         </div>
       </div>

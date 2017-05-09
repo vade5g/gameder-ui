@@ -28,6 +28,8 @@ export default class Discovery extends Component {
           currentUser: this.getUserFromArray(),
         });
       });
+      console.log(profiles);
+      this.props.addProfiles(profiles);
   }
 
   getNewUsers(){
@@ -35,6 +37,7 @@ export default class Discovery extends Component {
       .then(res => {
         profiles = profiles.concat(res.data);
       });
+        this.props.addProfiles(profiles);
   }
 
   getUserFromArray(){

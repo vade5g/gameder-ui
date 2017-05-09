@@ -7,7 +7,7 @@ export default class Matches extends Component{
   render(){
     const profiles=[{name:'ae',img:'https://robohash.org/2440'},{name:'se',img:'https://robohash.org/9415'}];
     return(
-      <MatchesListGroup profiles={profiles}/>
+      <MatchesListGroup profiles={this.props.profiles}/>
     );
   }
 }
