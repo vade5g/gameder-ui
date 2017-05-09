@@ -18,10 +18,6 @@ const pages = [
     title: 'Matches',
     component: TextInput,
   },
-  {
-    title: 'Settings',
-    component: Settings,
-  },
 ];
 
 export default class MainView extends React.Component{
@@ -72,8 +68,11 @@ export default class MainView extends React.Component{
       <div>
         <Header/>
         <div className="container">
+          <ul className="nav nav-tabs nav-justified tabs">
+            {this.renderTabs()}
+          </ul>
           <div className="tab-content">
-            <Discovery/>
+            <Page/>
           </div>
         </div>
       </div>
