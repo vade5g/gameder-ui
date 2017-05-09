@@ -62,7 +62,11 @@ export default class MainView extends React.Component{
 
       tabs.push(
         <li {...props}>
-          <a href="#" onClick={this.switchTab} id={index}>{page.title}</a>
+          <a href="#" onClick={this.switchTab} id={index}>
+            {page.title}
+            {' '}
+            {page.title == 'Matches' && this.state.profiles.length > 0 ? <span className="badge">{this.state.profiles.length}</span> : ''}
+          </a>
         </li>
       );
     }
