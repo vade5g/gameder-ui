@@ -8,6 +8,8 @@ import Dropdown from './components/Dropdown';
 import RangeSlider from './components/RangeSlider';
 import ReactBootstrapSlider from 'react-bootstrap-slider';
 import Discovery from './components/Discovery';
+import MatchesListGroup from './components/ListGroup/MatchesListGroup';
+import Matches from './components/Matches';
 
 const pages = [
   {
@@ -16,11 +18,7 @@ const pages = [
   },
   {
     title: 'Matches',
-    component: TextInput,
-  },
-  {
-    title: 'Settings',
-    component: Settings,
+    component: Matches,
   },
 ];
 
@@ -67,13 +65,15 @@ export default class MainView extends React.Component{
 
   render() {
     const Page = this.renderPage();
-
     return(
       <div>
         <Header/>
         <div className="container">
+          <ul className="nav nav-tabs nav-justified tabs">
+              {this.renderTabs()}
+           </ul>
           <div className="tab-content">
-            <Discovery/>
+            <Page/>
           </div>
         </div>
       </div>
