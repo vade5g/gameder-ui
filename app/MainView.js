@@ -84,6 +84,7 @@ export default class MainView extends React.Component{
            </ul>
           <div className="tab-content">
             <Page addProfiles={this.addProfiles} profiles={this.state.profiles}/>
+
           </div>
         </div>
       </div>
