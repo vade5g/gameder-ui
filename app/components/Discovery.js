@@ -23,7 +23,7 @@ export default class Discovery extends Component {
 
   componentWillMount() {
     let old = this.props.getOldProfiles();
-    axios.get('http://localhost:8080/api/profiles')
+    axios.get(endpoint)
       .then(res => {
         this.setState({
           profiles:old.concat(res.data)
@@ -43,7 +43,7 @@ export default class Discovery extends Component {
   }
 
   getNewUsers(){
-    axios.get('http://localhost:8080/api/profiles')
+    axios.get(endpoint)
       .then(res => {
         this.setState({
           profiles: this.state.profiles.concat(res.data)
