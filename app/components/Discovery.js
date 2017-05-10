@@ -4,18 +4,16 @@ import PropTypes from 'prop-types';
 import UserView from './UserView';
 import Button from './Button';
 
-// a proxy endpoint
-const endpoint = '/api/profiles';
-
+const endpoint = process.env.API_ENDPOINT;
 
 export default class Discovery extends Component {
   constructor(props){
     super(props);
     this.state = {
       currentUser: {},
-      loads:0,
-      clicks:0,
-      profiles:[]
+      loads: 0,
+      clicks: 0,
+      profiles: [],
     };
     this.clickSuccess = this.clickSuccess.bind(this);
     this.clickDeny = this.clickDeny.bind(this);

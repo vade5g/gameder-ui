@@ -10,14 +10,14 @@ const PATHS = {
   app: path.join(__dirname, 'app'),
   build: path.join(__dirname, 'build'),
   assets: path.join(ROOT, 'assets'),
-  tests: path.join(ROOT, 'test')
+  tests: path.join(ROOT, 'test'),
 };
 
 const FILE_MATCHERS = {
   JS: /\.jsx?$/,
   CSS: /\.css$/,
   FONTS: /\.(eot|svg|ttf|woff|woff2)$/,
-  IMAGES: /\.(jpe?g|png|svg)$/
+  IMAGES: /\.(jpe?g|png|svg)$/,
 };
 
 const commonConfig = (env) => {
@@ -37,16 +37,22 @@ const commonConfig = (env) => {
     },
     devtool: 'cheap-module-source-map',
     plugins: [
+      new webpack.DefinePlugin({
+        'process.env': {
+          'API_ENDPOINT': JSON.stringify(process.env.API_ENDPOINT)
+            || JSON.stringify('http://localhost:9090/api/profiles'),
+        },
+      }),
       new HtmlWebpackPlugin({
         title: 'Gameder',
-        template: 'common/index.ejs'
+        template: 'common/index.ejs',
       }),
       new webpack.HotModuleReplacementPlugin(),
       new webpack.NamedModulesPlugin(),
       new webpack.ProvidePlugin({
         jQuery: 'jquery',
         $: 'jquery',
-        jquery: 'jquery'
+        jquery: 'jquery',
       }),
       // new CopyWebpackPlugin([
       //   {
@@ -63,7 +69,7 @@ const commonConfig = (env) => {
         {
           test: FILE_MATCHERS.JS,
           include: [
-            PATHS.app
+            PATHS.app,
           ],
           exclude: [
             PATHS.build,
@@ -85,8 +91,8 @@ const commonConfig = (env) => {
           test: FILE_MATCHERS.CSS,
           use: [
             'style-loader',
-            'css-loader'
-          ]
+            'css-loader',
+          ],
         },
         {
           test: FILE_MATCHERS.FONTS,
@@ -94,8 +100,8 @@ const commonConfig = (env) => {
         },
         {
           test: FILE_MATCHERS.IMAGES,
-          loader: 'url-loader'
-        }
+          loader: 'url-loader',
+        },
       ],
     },
   };
@@ -142,8 +148,8 @@ const developmentConfig = (env) => {
         //     path.join(ROOT, 'node_modules')
         //   ]
         // },
-      ]
-    }
+      ],
+    },
   };
 
   return merge(commonConfig(env), config);
