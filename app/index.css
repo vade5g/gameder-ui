@@ -7,6 +7,23 @@
 .badge{
   background-color: #de4141 !important;
 }
+.footer{
+  background-color: #eee;
+  bottom: 0;
+  height: auto;
+  padding-right: 60px;
+  padding-left: 60px;
+  margin-top: 90px;
+  margin-left: 13px;
+  margin-right: 13px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+.text-muted{
+  margin: 20px 0;
+}
 .nav-tabs{
   padding-bottom: 30px;
 }

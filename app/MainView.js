@@ -10,6 +10,7 @@ import ReactBootstrapSlider from 'react-bootstrap-slider';
 import Discovery from './components/Discovery';
 import MatchesListGroup from './components/ListGroup/MatchesListGroup';
 import Matches from './components/Matches';
+import Footer from './components/Footer'
 
 const pages = [
   {
@@ -90,9 +91,9 @@ export default class MainView extends React.Component{
            </ul>
           <div className="tab-content">
             <Page addProfiles={this.addProfiles} profiles={this.state.profiles}/>
-
           </div>
         </div>
+        <Footer/>
       </div>
     );
   }

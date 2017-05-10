@@ -20,8 +20,9 @@ class UserView extends Component {
         </div>
         <div className="center">
         <h3 className="username">{`Username: ${name}`}</h3>
-          <Button className='btn-circle no' style="danger" onClick={this.props.onDenyClick}>No</Button>
-          <Button className='btn-circle yes' style="success" onClick={this.props.onSuccessClick}>Yes</Button>
+          <Button className='btn-circle no' style="danger" onClick={this.props.onDenyClick}><i className="fa fa-times fa-3x"></i>
+</Button>
+          <Button className='btn-circle yes' style="success" onClick={this.props.onSuccessClick}><i className="fa fa-heart fa-3x" ></i></Button>
         </div>
       </div>
     );
