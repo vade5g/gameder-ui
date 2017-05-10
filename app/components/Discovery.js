@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import UserView from './UserView';
 import Button from './Button';
 
-const endpoint = process.env.API_ENDPOINT;
+const endpoint = process.env.API_ENDPOINT + '/profiles';
 
 export default class Discovery extends Component {
   constructor(props){

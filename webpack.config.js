@@ -40,7 +40,7 @@ const commonConfig = (env) => {
       new webpack.DefinePlugin({
         'process.env': {
           'API_ENDPOINT': JSON.stringify(process.env.API_ENDPOINT)
-            || JSON.stringify('http://localhost:9090/api/profiles'),
+            || JSON.stringify('http://localhost:9090/api'),
         },
       }),
       new HtmlWebpackPlugin({
