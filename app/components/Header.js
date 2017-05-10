@@ -5,7 +5,7 @@ export default class Header extends Component{
     return(
       <div className="container-fluid">
         <div className="jumbotron center">
-          <img className='logo-img img-responsive center-block ' src='https://lh3.googleusercontent.com/IuD3CceUxSc94oDRnIz6I5yVeHcciMMzvuHROcKkTXXZ_4DYadTfZmjv22dxnXCNdcrWO9n2zyz4Um8=w1440-h803'></img>
+          <img className='logo-img img-responsive center-block ' src='https://lh3.googleusercontent.com/290f7ygV_rTRZtBYw-ISEA7jew3FkpWWYkYMKcqPFyMT72Dp8Mf6fRGlhd35njQVZToszbGB_-Lf_vk=w1440-h759'></img>
           <p>Tinder for Gamers</p>
         </div>
       </div>
