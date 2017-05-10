@@ -21,26 +21,24 @@ export default class Discovery extends Component {
   }
 
   componentWillMount() {
-    axios.get(endpoint)
+    axios.get('http://localhost:8080/api/profiles')
       .then(res => {
         profiles = res.data;
         console.log(profiles);
         this.setState({
           currentUser: this.getUserFromArray(),
         });
-
-        console.log(profiles);
-        this.props.addProfiles(profiles);
       });
 
   }
 
   getNewUsers(){
-    axios.get(endpoint)
+    axios.get('http://localhost:8080/api/profiles')
       .then(res => {
         profiles = profiles.concat(res.data);
         console.log(profiles);
       });
+
   }
 
   getUserFromArray(){

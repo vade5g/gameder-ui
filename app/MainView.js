@@ -32,7 +32,7 @@ export default class MainView extends React.Component{
       profiles: [],
     };
 
-    this.addProfiles = this.addProfiles.bind(this, this.state.profiles);
+    this.addProfiles = this.addProfiles.bind(this);
   }
 
   addProfiles(user) {
