@@ -17,7 +17,7 @@ const FILE_MATCHERS = {
   JS: /\.jsx?$/,
   CSS: /\.css$/,
   FONTS: /\.(eot|svg|ttf|woff|woff2)$/,
-  IMAGES: /\.jpe?g$/
+  IMAGES: /\.(jpe?g|png|svg)$/
 };
 
 const commonConfig = (env) => {

@@ -7,6 +7,10 @@
 .badge{
   background-color: #de4141 !important;
 }
+.logo-img{
+  width: 400px;
+  height:auto;
+}
 .footer{
   background-color: #eee;
   bottom: 0;
