@@ -7,6 +7,7 @@ const UserShape = {
   img: PropTypes.string,
   email: PropTypes.string,
   like: PropTypes.bool,
+  desc:PropTypes.string,
 };
 
 class UserView extends Component {

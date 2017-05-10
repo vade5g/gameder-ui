@@ -6,7 +6,7 @@ import Button from './Button';
 
 // a proxy endpoint
 const endpoint = '/api/profiles';
-let profiles = {};
+
 
 export default class Discovery extends Component {
   constructor(props){
@@ -14,17 +14,21 @@ export default class Discovery extends Component {
     this.state = {
       currentUser: {},
       loads:0,
-      clicks:0
+      clicks:0,
+      profiles:[]
     };
     this.clickSuccess = this.clickSuccess.bind(this);
     this.clickDeny = this.clickDeny.bind(this);
   }
 
   componentWillMount() {
+    let old = this.props.getOldProfiles();
     axios.get(endpoint)
       .then(res => {
-        profiles = res.data;
-        console.log(profiles);
+        this.setState({
+          profiles:old.concat(res.data)
+        });
+        console.log(this.state.profiles);
         this.setState({
           currentUser: this.getUserFromArray(),
         });
@@ -32,19 +36,28 @@ export default class Discovery extends Component {
 
   }
 
+  componentWillUnmount(){
+    let currentProfiles = this.state.profiles;
+    currentProfiles.unshift(this.state.currentUser);
+    this.props.saveProfiles(currentProfiles);
+  }
+
   getNewUsers(){
     axios.get(endpoint)
       .then(res => {
-        profiles = profiles.concat(res.data);
-        console.log(profiles);
+        this.setState({
+          profiles: this.state.profiles.concat(res.data)
+        });
+
+        console.log(this.state.profiles);
       });
 
   }
 
   getUserFromArray(){
-    let user = profiles[0]
-    profiles.splice(0,1)
-    if(profiles.length<=2){
+    let user = this.state.profiles[0]
+    this.state.profiles.splice(0,1)
+    if(this.state.profiles.length<=2){
       this.getNewUsers();
     }
     return user;
@@ -59,12 +72,12 @@ export default class Discovery extends Component {
   }
 
   getRandomUser() {
-    let i = Math.floor(Math.random()*((profiles.length-1)-0+1)+0);
+    let i = Math.floor(Math.random()*((this.state.profiles.length-1)-0+1)+0);
     if(!this.state)
-      return profiles[i];
+      return this.state.profiles[i];
 
-    return profiles[i] !== this.state.currentUser
-      ? profiles[i]
+    return this.state.profiles[i] !== this.state.currentUser
+      ? this.state.profiles[i]
       : this.getRandomUser();
   }
 
