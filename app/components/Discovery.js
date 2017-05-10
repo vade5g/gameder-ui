@@ -21,7 +21,7 @@ export default class Discovery extends Component {
   }
 
   componentWillMount() {
-    axios.get('http://localhost:8080/api/profiles')
+    axios.get(endpoint)
       .then(res => {
         profiles = res.data;
         console.log(profiles);
@@ -33,7 +33,7 @@ export default class Discovery extends Component {
   }
 
   getNewUsers(){
-    axios.get('http://localhost:8080/api/profiles')
+    axios.get(endpoint)
       .then(res => {
         profiles = profiles.concat(res.data);
         console.log(profiles);
