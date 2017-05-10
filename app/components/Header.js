@@ -5,7 +5,7 @@ export default class Header extends Component{
     return(
       <div className="container-fluid">
         <div className="jumbotron center">
-          <h1>Gameder</h1>
+          <img className='logo-img img-responsive center-block ' src='http://users.metropolia.fi/~valtteku/gamederlogo.png'></img>
           <p>Tinder for Gamers</p>
         </div>
       </div>

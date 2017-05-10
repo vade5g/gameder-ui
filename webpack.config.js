@@ -9,14 +9,15 @@ const PATHS = {
   root: ROOT,
   app: path.join(__dirname, 'app'),
   build: path.join(__dirname, 'build'),
-  assets: path.join(ROOT, 'assets')
+  assets: path.join(ROOT, 'assets'),
+  tests: path.join(ROOT, 'test')
 };
 
 const FILE_MATCHERS = {
   JS: /\.jsx?$/,
   CSS: /\.css$/,
   FONTS: /\.(eot|svg|ttf|woff|woff2)$/,
-  IMAGES: /\.jpe?g$/
+  IMAGES: /\.(jpe?g|png|svg)$/
 };
 
 const commonConfig = (env) => {
@@ -28,6 +29,11 @@ const commonConfig = (env) => {
       path: PATHS.build,
       devtoolModuleFilenameTemplate: 'webpack:///[absolute-resource-path]',
       filename: '[name].[ext]',
+    },
+    externals: {
+      'react/addons': 'react',
+      'react/lib/ExecutionEnvironment': 'react',
+      'react/lib/ReactContext': 'react',
     },
     devtool: 'cheap-module-source-map',
     plugins: [
@@ -61,7 +67,9 @@ const commonConfig = (env) => {
           ],
           exclude: [
             PATHS.build,
-            path.join(ROOT, 'node_modules')
+
+            path.join(ROOT, 'node_modules'),
+            // PATHS.tests
           ],
           loader: 'babel-loader',
           options: {

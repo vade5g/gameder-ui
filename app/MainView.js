@@ -8,6 +8,9 @@ import Dropdown from './components/Dropdown';
 import RangeSlider from './components/RangeSlider';
 import ReactBootstrapSlider from 'react-bootstrap-slider';
 import Discovery from './components/Discovery';
+import MatchesListGroup from './components/ListGroup/MatchesListGroup';
+import Matches from './components/Matches';
+import Footer from './components/Footer'
 
 const pages = [
   {
@@ -16,11 +19,7 @@ const pages = [
   },
   {
     title: 'Matches',
-    component: TextInput,
-  },
-  {
-    title: 'Settings',
-    component: Settings,
+    component: Matches,
   },
 ];
 
@@ -28,9 +27,21 @@ export default class MainView extends React.Component{
   constructor(props){
     super(props);
     this.switchTab = this.switchTab.bind(this);
+    this.addProfiles=this.addProfiles.bind(this);
     this.state = {
       activeTab: 0,
+      profiles: [],
     };
+
+    this.addProfiles = this.addProfiles.bind(this);
+  }
+
+  addProfiles(user) {
+    let pro = this.state.profiles;
+    pro.push(user);
+    this.setState({
+      profiles: pro,
+    });
   }
 
   switchTab(ev) {
@@ -54,7 +65,11 @@ export default class MainView extends React.Component{
 
       tabs.push(
         <li {...props}>
-          <a href="#" onClick={this.switchTab} id={index}>{page.title}</a>
+          <a href="#" onClick={this.switchTab} id={index}>
+            {page.title}
+            {' '}
+            {page.title == 'Matches' && this.state.profiles.length > 0 ? <span className="badge">{this.state.profiles.length}</span> : ''}
+          </a>
         </li>
       );
     }
@@ -67,18 +82,18 @@ export default class MainView extends React.Component{
 
   render() {
     const Page = this.renderPage();
-
     return(
       <div>
         <Header/>
         <div className="container">
           <ul className="nav nav-tabs nav-justified tabs">
-            {this.renderTabs()}
-          </ul>
+              {this.renderTabs()}
+           </ul>
           <div className="tab-content">
-            <Page/>
+            <Page addProfiles={this.addProfiles} profiles={this.state.profiles}/>
           </div>
         </div>
+        <Footer/>
       </div>
     );
   }

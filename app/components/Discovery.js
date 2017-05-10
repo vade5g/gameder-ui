@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 import UserView from './UserView';
 import Button from './Button';
 
-// does not look good though
+// a proxy endpoint
+const endpoint = '/api/profiles';
 let profiles = {};
 
 export default class Discovery extends Component {
@@ -12,19 +13,49 @@ export default class Discovery extends Component {
     super(props);
     this.state = {
       currentUser: {},
+      loads:0,
+      clicks:0
     };
     this.clickSuccess = this.clickSuccess.bind(this);
     this.clickDeny = this.clickDeny.bind(this);
   }
 
-  componentDidMount() {
-    axios.get('http://localhost:8080/api/profiles')
+  componentWillMount() {
+    axios.get(endpoint)
       .then(res => {
         profiles = res.data;
+        console.log(profiles);
         this.setState({
-          currentUser: this.getRandomUser(),
+          currentUser: this.getUserFromArray(),
         });
       });
+
+  }
+
+  getNewUsers(){
+    axios.get(endpoint)
+      .then(res => {
+        profiles = profiles.concat(res.data);
+        console.log(profiles);
+      });
+
+  }
+
+  getUserFromArray(){
+    let user = profiles[0]
+    profiles.splice(0,1)
+    if(profiles.length<=2){
+      this.getNewUsers();
+    }
+    return user;
+  }
+
+  likeProfile(){
+    let profile = this.state.currentUser;
+    if(profile.like==true){
+      this.props.addProfiles(profile);
+    }
+    this.newUser();
   }
 
   getRandomUser() {
@@ -38,7 +69,7 @@ export default class Discovery extends Component {
   }
 
   clickSuccess(){
-    this.newUser();
+    this.likeProfile();
   }
 
   clickDeny(){
@@ -47,7 +78,7 @@ export default class Discovery extends Component {
 
   newUser(){
     this.setState({
-      currentUser: this.getRandomUser(),
+      currentUser: this.getUserFromArray(),
     });
   }
 
