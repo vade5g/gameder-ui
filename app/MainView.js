@@ -26,18 +26,20 @@ export default class MainView extends React.Component{
   constructor(props){
     super(props);
     this.switchTab = this.switchTab.bind(this);
+    this.addProfiles=this.addProfiles.bind(this);
     this.state = {
       activeTab: 0,
-      profiles:[],
+      profiles: [],
     };
 
-    this.addProfiles = this.addProfiles.bind(this, this.state.profiles);
+    this.addProfiles = this.addProfiles.bind(this);
   }
 
-  addProfiles(array){
+  addProfiles(user) {
     let pro = this.state.profiles;
+    pro.push(user);
     this.setState({
-      profiles: pro.concat(array),
+      profiles: pro,
     });
   }
 
@@ -62,7 +64,11 @@ export default class MainView extends React.Component{
 
       tabs.push(
         <li {...props}>
-          <a href="#" onClick={this.switchTab} id={index}>{page.title}</a>
+          <a href="#" onClick={this.switchTab} id={index}>
+            {page.title}
+            {' '}
+            {page.title == 'Matches' && this.state.profiles.length > 0 ? <span className="badge">{this.state.profiles.length}</span> : ''}
+          </a>
         </li>
       );
     }

@@ -22,9 +22,9 @@ export default class MatchesListGroup extends Component{
       img:'https://robohash.org/7433',
     }
     return(
-      <div className="list-group">
+      <ul className="list-group">
         {this.renderProfiles()}
-      </div>
+      </ul>
     );
   }
 }

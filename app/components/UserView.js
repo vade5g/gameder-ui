@@ -4,7 +4,9 @@ import Button from './Button';
 
 const UserShape = {
   name: PropTypes.string,
-  img: PropTypes.string
+  img: PropTypes.string,
+  email: PropTypes.string,
+  like: PropTypes.bool,
 };
 
 class UserView extends Component {

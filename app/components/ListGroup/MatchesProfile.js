@@ -6,12 +6,17 @@ export default class MatchesProfile extends Component{
   render(){
     const name = this.props.user.name;
     const img = this.props.user.img;
-    //const conInf= this.props.user.contInf;
+    const email = this.props.user.email;
     return(
-      <a href="#" className="list-group-item ">
-        <h4 className="list-group-item-heading">{`Username: ${name}`}</h4>
-        <img src={`${img}`} className="img-circle matchImg"/>
-      </a>
+      <li className="list-group-item row">
+        <div className='col-md-3'>
+          <img src={img} className="img-circle matchImg"/>
+        </div>
+        <div className='col-md-9'>
+          <h4>{`Username: ${name}`}</h4>
+          <p>{email}</p>
+        </div>
+      </li>
     );
   }
 }
