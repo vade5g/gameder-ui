@@ -31,10 +31,31 @@ export default class MainView extends React.Component{
     this.state = {
       activeTab: 0,
       profiles: [],
+      oldProfiles:[]
     };
 
     this.addProfiles = this.addProfiles.bind(this);
+    this.saveProfiles = this.saveProfiles .bind(this);
+    this.getOldProfiles = this.getOldProfiles.bind(this);
+    this.updateProfile = this.updateProfile.bind(this);
   }
+
+  saveProfiles(array){
+    let saved = this.state.oldProfiles;
+    saved=saved.concat(array);
+    this.setState({
+      oldProfiles: saved
+    });
+  }
+
+  getOldProfiles(){
+    let old = this.state.oldProfiles;
+    this.setState({
+      oldProfiles:[]
+    });
+    return old;
+  }
+
 
   addProfiles(user) {
     let pro = this.state.profiles;
@@ -43,6 +64,12 @@ export default class MainView extends React.Component{
       profiles: pro,
     });
   }
+   updateProfile(index){
+     this.state.profiles.splice(index, 1)
+     this.setState({
+       profiles: this.state.profiles
+     });
+   }
 
   switchTab(ev) {
     this.setState({
@@ -90,7 +117,7 @@ export default class MainView extends React.Component{
               {this.renderTabs()}
            </ul>
           <div className="tab-content">
-            <Page addProfiles={this.addProfiles} profiles={this.state.profiles}/>
+            <Page addProfiles={this.addProfiles} profiles={this.state.profiles} saveProfiles={this.saveProfiles} getOldProfiles={this.getOldProfiles} updateProfile={this.updateProfile}/>
           </div>
         </div>
         <Footer/>

@@ -9,7 +9,7 @@ export default class Matches extends Component{
     console.log(this.props.profiles)
     return(
       <div className='container'>
-        <MatchesListGroup profiles={this.props.profiles}/>
+        <MatchesListGroup profiles={this.props.profiles} updateProfile={this.props.updateProfile}/>
       </div>
     );
   }
