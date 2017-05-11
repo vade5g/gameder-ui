@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "preinstall": "if test \"$NODE_ENV\" = \"production\" ; then npm install webpack webpack-merge ; fi ",
+    "preinstall": "if test \"$NODE_ENV\" = \"production\" ; then npm install webpack webpack-merge html-webpack-plugin; fi ",
     "lint:js": "eslint app/ webpack.*.js --cache",
     "start": "nodemon --watch webpack.config.js --exec \"webpack-dev-server --env development\"",
     "browser-test": "./node_modules/.bin/wdio wdio.conf.js",
